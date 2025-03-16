@@ -1,0 +1,1064 @@
+<!DOCTYPE html>
+<html lang="en" class="light-mode">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Center Of One Welfare-Africa (COOW-Africa)</title>
+  <style>
+    :root {
+      --primary: #13E213;  /* Tab color */
+      --secondary: #0000FF;
+      --tertiary: #00E4EF;
+      --accent: #8CC63F;
+      --highlight: #13E213;
+      --background: white;
+      --text: #333333;
+      --card-bg: #f5f5f5;
+      --header-bg: #ffffff;
+      --footer-bg: #f0f0f0;
+      --button-text: white;
+      --button-bg: #4CAF50;
+      --nav-text: #ffffff;
+      --nav-hover: #f8d7d3;
+      --nav-hover-text: #333333;
+    }
+
+    /* Dark mode variables */
+    .dark-mode {
+      --primary: #E05D44;
+      --secondary: #4040FF;
+      --tertiary: #40F0F7;
+      --accent: #9ED45A;
+      --highlight: #40F040;
+      --background: #121212;
+      --text: #f5f5f5;
+      --card-bg: #1e1e1e;
+      --header-bg: #1a1a1a;
+      --footer-bg: #1a1a1a;
+      --button-text: white;
+      --button-bg: #5CBA5C;
+      --nav-text: #ffffff;
+      --nav-hover: #f8d7d3;
+      --nav-hover-text: #333333;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: var(--background);
+      color: var(--text);
+      transition: all 0.3s ease;
+    }
+
+    /* Header Styles */
+    header {
+      background-color: var(--header-bg);
+      box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      transition: all 0.3s ease;
+    }
+
+    .top-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 5%;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+    }
+
+    .logo {
+      height: 60px;
+    }
+
+    .tagline {
+      margin-left: 1rem;
+      font-style: italic;
+      max-width: 300px;
+    }
+
+    .top-actions {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .socials a {
+      margin-right: 10px;
+      color: var(--secondary);
+      font-size: 1.2rem;
+      transition: color 0.3s;
+    }
+
+    .socials a:hover {
+      color: var(--accent);
+    }
+
+    .donate-btn {
+      background-color: var(--button-bg);
+      color: var(--button-text);
+      padding: 0.7rem 1.5rem;
+      border: none;
+      border-radius: 4px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .donate-btn:hover {
+      background-color: var(--highlight);
+      transform: translateY(-2px);
+    }
+
+    .language-selector {
+      margin-left: 1rem;
+      padding: 0.3rem;
+      border-radius: 4px;
+      background-color: var(--card-bg);
+      color: var(--text);
+      border: 1px solid #ddd;
+    }
+
+    /* Navigation */
+    nav {
+      background-color: var(--primary);
+      transition: all 0.3s;
+    }
+
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      padding: 0 5%;
+      align-items: center;
+    }
+
+    .main-nav {
+      display: flex;
+      list-style: none;
+    }
+
+    .main-nav li {
+      position: relative;
+    }
+
+    .main-nav a {
+      display: block;
+      padding: 1rem 1.2rem;
+      color: var(--nav-text);
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.3s;
+    }
+
+    .main-nav a:hover {
+      background-color: var(--nav-hover);
+      color: var(--nav-hover-text);
+    }
+
+    .toggle-mode {
+      background: none;
+      border: none;
+      color: var(--nav-text);
+      padding: 1rem;
+      cursor: pointer;
+      font-size: 1.2rem;
+    }
+
+    .mobile-menu-btn {
+      display: none;
+      background: var(--primary);
+      border: none;
+      color: var(--button-text);
+      font-size: 1.5rem;
+      cursor: pointer;
+      padding: 0.5rem 1rem;
+      border-radius: 4px;
+    }
+
+    /* Hero Section */
+    .hero {
+      background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/api/placeholder/1200/500') center/cover no-repeat;
+      height: 500px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: white;
+      padding: 1rem;
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      max-width: 600px;
+      margin-bottom: 2rem;
+    }
+
+    /* About Us Section */
+    .about-us {
+      padding: 3rem 5%;
+      background-color: var(--background);
+    }
+
+    .about-content {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 2rem;
+    }
+
+    .about-text {
+      flex: 1;
+      min-width: 300px;
+    }
+
+    .about-image {
+      flex: 1;
+      min-width: 300px;
+      height: 300px;
+      background: url('/api/placeholder/500/300') center/cover no-repeat;
+      border-radius: 8px;
+    }
+
+    /* Programs / What We Do Section */
+    .programs {
+      padding: 3rem 5%;
+      background-color: var(--background);
+    }
+
+    .program-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2rem;
+    }
+
+    .program-item {
+      flex: 1;
+      min-width: 300px;
+      max-width: 350px;
+      padding: 2rem;
+      background-color: var(--card-bg);
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .program-icon {
+      width: 60px;
+      height: 60px;
+      background-color: var(--tertiary);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1rem;
+    }
+
+    .program-title {
+      margin-bottom: 1rem;
+      font-size: 1.3rem;
+      color: var(--text);
+    }
+
+    .program-text {
+      margin-bottom: 1rem;
+      line-height: 1.6;
+      color: var(--text);
+    }
+
+    .learn-more {
+      color: var(--secondary);
+      text-decoration: none;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+    }
+
+    .learn-more:hover {
+      color: var(--tertiary);
+    }
+
+    /* Research, Training, Our Voice, Get Involved, Join Us Sections */
+    .research, .training, .our-voice, .get-involved, .join-us {
+      padding: 3rem 5%;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 2rem;
+      position: relative;
+      font-size: 2rem;
+      color: var(--text);
+    }
+
+    .section-title:after {
+      content: '';
+      display: block;
+      width: 80px;
+      height: 4px;
+      background-color: var(--tertiary);
+      margin: 0.5rem auto;
+    }
+
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+
+    .project-card {
+      background-color: var(--card-bg);
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s;
+    }
+
+    .project-card:hover {
+      transform: translateY(-10px);
+    }
+
+    .project-img {
+      height: 200px;
+      background: url('/api/placeholder/400/320') center/cover no-repeat;
+    }
+
+    .project-content {
+      padding: 1.5rem;
+    }
+
+    .project-title {
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+      color: var(--text);
+    }
+
+    .project-description {
+      color: var(--text);
+      margin-bottom: 1rem;
+      line-height: 1.6;
+    }
+
+    .read-more {
+      display: inline-block;
+      padding: 0.5rem 1rem;
+      background-color: var(--secondary);
+      color: var(--button-text);
+      text-decoration: none;
+      border-radius: 4px;
+      font-weight: 500;
+      transition: background-color 0.3s;
+    }
+
+    .read-more:hover {
+      background-color: var(--tertiary);
+    }
+
+    /* News Section */
+    .news {
+      padding: 3rem 5%;
+    }
+
+    .news-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+
+    .news-card {
+      background-color: var(--card-bg);
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .news-img {
+      height: 200px;
+      background: url('/api/placeholder/400/320') center/cover no-repeat;
+    }
+
+    .news-content {
+      padding: 1.5rem;
+    }
+
+    .news-date {
+      color: var(--primary);
+      font-weight: 500;
+      margin-bottom: 0.5rem;
+    }
+
+    .news-title {
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+      color: var(--text);
+    }
+
+    .news-excerpt {
+      color: var(--text);
+      margin-bottom: 1rem;
+      line-height: 1.6;
+    }
+
+    /* Support Us Section */
+    .support-us {
+      padding: 3rem 5%;
+    }
+
+    .cta {
+      background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('/api/placeholder/1200/400') center/cover no-repeat;
+      color: white;
+      text-align: center;
+      padding: 4rem 5%;
+      border-radius: 8px;
+    }
+
+    .cta h2 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .cta p {
+      max-width: 600px;
+      margin: 0 auto 2rem;
+      font-size: 1.1rem;
+    }
+
+    .cta-btn {
+      background-color: var(--button-bg);
+      color: var(--button-text);
+      padding: 1rem 2rem;
+      border: none;
+      border-radius: 4px;
+      font-weight: bold;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .cta-btn:hover {
+      background-color: var(--accent);
+      transform: translateY(-3px);
+    }
+
+    /* Footer */
+    footer {
+      background-color: var(--footer-bg);
+      padding: 3rem 5% 1rem;
+      color: var(--text);
+    }
+
+    .footer-content {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      margin-bottom: 2rem;
+    }
+
+    .footer-logo {
+      margin-bottom: 1rem;
+      height: 50px;
+    }
+
+    .footer-info, .footer-links, .footer-newsletter {
+      flex: 1;
+      min-width: 250px;
+      margin-bottom: 2rem;
+      padding-right: 2rem;
+    }
+
+    .footer-title {
+      font-size: 1.3rem;
+      margin-bottom: 1rem;
+      color: var(--text);
+    }
+
+    .footer-links ul {
+      list-style: none;
+    }
+
+    .footer-links li {
+      margin-bottom: 0.5rem;
+    }
+
+    .footer-links a {
+      color: var(--text);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .footer-links a:hover {
+      color: var(--tertiary);
+    }
+
+    .newsletter-form {
+      display: flex;
+      margin-top: 1rem;
+    }
+
+    .newsletter-input {
+      flex: 1;
+      padding: 0.7rem;
+      border: 1px solid #ddd;
+      border-radius: 4px 0 0 4px;
+      outline: none;
+    }
+
+    .newsletter-btn {
+      background-color: var(--button-bg);
+      color: var(--button-text);
+      border: none;
+      padding: 0 1rem;
+      border-radius: 0 4px 4px 0;
+      cursor: pointer;
+    }
+
+    .footer-bottom {
+      text-align: center;
+      padding-top: 1rem;
+      border-top: 1px solid #ddd;
+    }
+
+    /* Scroll-to-top Button */
+    .go-top {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      background-color: var(--button-bg);
+      color: white;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      opacity: 0;
+      transition: opacity 0.3s, transform 0.3s;
+      z-index: 99;
+    }
+
+    .go-top.visible {
+      opacity: 1;
+    }
+
+    .go-top:hover {
+      transform: translateY(-5px);
+    }
+
+    /* Modal Styles for Donation */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0,0,0,0.6);
+    }
+
+    .modal-content {
+      background-color: var(--background);
+      margin: 10% auto;
+      padding: 20px;
+      border: 1px solid #888;
+      width: 90%;
+      max-width: 500px;
+      border-radius: 8px;
+      text-align: center;
+    }
+
+    .close {
+      color: var(--text);
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .close:hover,
+    .close:focus {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    /* Payment Methods Tabs */
+    .payment-methods {
+      margin: 1rem 0;
+    }
+    .payment-tab {
+      background-color: var(--card-bg);
+      border: none;
+      padding: 0.5rem 1rem;
+      margin-right: 0.5rem;
+      cursor: pointer;
+      border-radius: 4px;
+      transition: background-color 0.3s;
+    }
+    .payment-tab.active,
+    .payment-tab:hover {
+      background-color: var(--secondary);
+      color: var(--button-text);
+    }
+    .payment-content {
+      margin-top: 1rem;
+      text-align: left;
+    }
+    .payment-section {
+      display: none;
+    }
+    .payment-section.active {
+      display: block;
+    }
+
+    /* Responsive Styles */
+    @media (max-width: 991px) {
+      .tagline {
+        display: none;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .top-bar {
+        flex-direction: column;
+        padding: 1rem;
+      }
+
+      .logo-container {
+        margin-bottom: 1rem;
+      }
+
+      .main-nav {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+      }
+
+      .main-nav.active {
+        display: flex;
+      }
+
+      .nav-container {
+        flex-direction: column;
+      }
+
+      .mobile-menu-btn {
+        display: block;
+        margin-left: auto;
+      }
+
+      .toggle-mode {
+        margin-left: auto;
+      }
+
+      .hero h1 {
+        font-size: 2rem;
+      }
+
+      .section-title {
+        font-size: 1.8rem;
+      }
+
+      .stats-container {
+        flex-direction: column;
+      }
+
+      .stat-item {
+        margin-bottom: 1.5rem;
+      }
+
+      .program-item {
+        min-width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Scroll to top button -->
+  <div class="go-top">↑</div>
+
+  <!-- Donation Modal with Payment Tabs -->
+  <div id="donationModal" class="modal">
+    <div class="modal-content">
+      <span class="close" id="donationModalClose">&times;</span>
+      <h2>Support Our Mission</h2>
+      <p>Your contribution can make a difference. Please choose your preferred payment method:</p>
+      <div class="payment-methods">
+        <button class="payment-tab active" data-target="paypalSection">PayPal</button>
+        <button class="payment-tab" data-target="momoSection">Momo</button>
+        <button class="payment-tab" data-target="bankSection">Bank Deposit</button>
+      </div>
+      <div class="payment-content">
+        <!-- PayPal Section -->
+        <div id="paypalSection" class="payment-section active">
+          <form action="https://www.paypal.com/donate" method="post" target="_blank">
+            <!-- Replace YOUR_PAYPAL_BUTTON_ID with your actual PayPal hosted button ID -->
+            <input type="hidden" name="hosted_button_id" value="YOUR_PAYPAL_BUTTON_ID">
+            <button type="submit" class="donate-btn">Donate via PayPal</button>
+          </form>
+        </div>
+        <!-- Momo Section -->
+        <div id="momoSection" class="payment-section">
+          <h3>Donate via Mobile Money (Momo)</h3>
+          <p>Please send your donation to the following number:</p>
+          <p><strong>+123456789</strong></p>
+          <p>After sending your donation, please email <a href="mailto:donations@coow-africa.org">donations@coow-africa.org</a> with your transaction details.</p>
+        </div>
+        <!-- Bank Deposit Section -->
+        <div id="bankSection" class="payment-section">
+          <h3>Donate via Bank Deposit</h3>
+          <p>Please deposit your donation into our bank account:</p>
+          <p><strong>Bank Name:</strong> XYZ Bank</p>
+          <p><strong>Account Number:</strong> 123456789</p>
+          <p><strong>Account Name:</strong> COOW-Africa</p>
+          <p>After depositing, please email <a href="mailto:donations@coow-africa.org">donations@coow-africa.org</a> with your deposit details.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header>
+    <div class="top-bar">
+      <div class="logo-container">
+        <img src="/api/placeholder/120/60" alt="COOW-Africa Logo" class="logo">
+        <div class="tagline">
+          <p>Health and wellbeing: a right for all, our duty to protect</p>
+        </div>
+      </div>
+      <div class="top-actions">
+        <div class="socials">
+          <a href="#" aria-label="Twitter">𝕏</a>
+          <a href="#" aria-label="Facebook">f</a>
+          <a href="#" aria-label="Instagram">📷</a>
+          <a href="#" aria-label="YouTube">▶️</a>
+        </div>
+        <select class="language-selector">
+          <option value="en">English</option>
+          <option value="fr">Français</option>
+          <option value="pt">Português</option>
+          <option value="sw">Kiswahili</option>
+        </select>
+        <button class="donate-btn">DONATE NOW</button>
+      </div>
+    </div>
+    <nav>
+      <div class="nav-container">
+        <button class="mobile-menu-btn">☰</button>
+        <ul class="main-nav">
+          <li><a href="#home">HOME</a></li>
+          <li><a href="#about-us">ABOUT US</a></li>
+          <li><a href="#what-we-do">WHAT WE DO</a></li>
+          <li><a href="#research">RESEARCH</a></li>
+          <li><a href="#training">TRAINING</a></li>
+          <li><a href="#our-voice">OUR VOICE</a></li>
+          <li><a href="#get-involved">GET INVOLVED</a></li>
+          <li><a href="#join-us">JOIN US</a></li>
+          <li><a href="#support-us">SUPPORT US</a></li>
+        </ul>
+        <button class="toggle-mode" id="darkModeToggle">🌙 mode</button>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section id="home" class="hero">
+    <h1>Improving Health and Welfare Across Africa</h1>
+    <p>We work to ensure access to quality healthcare and improve welfare for all communities across Africa.</p>
+    <button class="donate-btn">SUPPORT OUR MISSION</button>
+  </section>
+
+  <!-- About Us Section -->
+  <section id="about-us" class="about-us">
+    <h2 class="section-title">ABOUT US</h2>
+    <div class="about-content">
+      <div class="about-text">
+        <p>The Center Of One Welfare-Africa (COOW-Africa) is a non-profit organization dedicated to improving health and welfare for communities across Africa through sustainable and community-centered approaches.</p>
+        <p>Our mission is to ensure access to quality healthcare and improve welfare for all communities across Africa, with a special focus on vulnerable populations in rural and underserved areas.</p>
+        <p>Founded in (year), COOW-Africa is committed to expanding its operations across the continent, working closely with local partners, governments, and international organizations to create lasting impact.</p>
+      </div>
+      <div class="about-image"></div>
+    </div>
+  </section>
+
+  <!-- What We Do Section -->
+  <section id="what-we-do" class="programs">
+    <h2 class="section-title">WHAT WE DO</h2>
+    <div class="program-container">
+      <div class="program-item">
+        <div class="program-icon">🌍</div>
+        <h3 class="program-title">One Health Approach</h3>
+        <p class="program-text">Integrating human, animal, and environmental health to address complex challenges in Africa.</p>
+        <a href="#" class="learn-more">Learn more →</a>
+      </div>
+      <div class="program-item">
+        <div class="program-icon">🏥</div>
+        <h3 class="program-title">Health Systems Strengthening</h3>
+        <p class="program-text">Working with local partners to build resilient and sustainable healthcare systems.</p>
+        <a href="#" class="learn-more">Learn more →</a>
+      </div>
+      <div class="program-item">
+        <div class="program-icon">🎓</div>
+        <h3 class="program-title">Global Health Education</h3>
+        <p class="program-text">Providing training and educational resources on global health challenges and solutions.</p>
+        <a href="#" class="learn-more">Learn more →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Research Section -->
+  <section id="research" class="research">
+    <h2 class="section-title">RESEARCH</h2>
+    <div class="research-content">
+      <p>At COOW-Africa, research is at the core of our evidence-based approach. We conduct and support research in areas related to public health, healthcare delivery, and social determinants of health in African contexts.</p>
+      <p>Our programs focus on generating evidence to inform policy and practice. We collaborate with academic institutions, research centers, and international organizations to enhance our capacity and impact.</p>
+    </div>
+  </section>
+
+  <!-- Training Section -->
+  <section id="training" class="training">
+    <h2 class="section-title">TRAINING</h2>
+    <div class="project-grid">
+      <div class="project-card">
+        <div class="project-img"></div>
+        <div class="project-content">
+          <h3 class="project-title">Community Health Workers Training</h3>
+          <p class="project-description">Empowering local health workers with skills to serve their communities effectively.</p>
+          <a href="#" class="read-more">Learn More</a>
+        </div>
+      </div>
+      <div class="project-card">
+        <div class="project-img"></div>
+        <div class="project-content">
+          <h3 class="project-title">Professional Development Programs</h3>
+          <p class="project-description">Enhancing skills of healthcare professionals through specialized training and workshops.</p>
+          <a href="#" class="read-more">Learn More</a>
+        </div>
+      </div>
+      <div class="project-card">
+        <div class="project-img"></div>
+        <div class="project-content">
+          <h3 class="project-title">Public Health Education</h3>
+          <p class="project-description">Raising awareness and educating communities about key public health issues.</p>
+          <a href="#" class="read-more">Learn More</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Our Voice Section -->
+  <section id="our-voice" class="our-voice">
+    <h2 class="section-title">OUR VOICE</h2>
+    <div class="news-grid">
+      <div class="news-card">
+        <div class="news-img"></div>
+        <div class="news-content">
+          <div class="news-date">March 8, 2025</div>
+          <h3 class="news-title">New Health Center Opens in Tanzania</h3>
+          <p class="news-excerpt">Our newest health center will provide essential services to over 5,000 people in rural Tanzania.</p>
+          <a href="#" class="read-more">Read More</a>
+        </div>
+      </div>
+      <div class="news-card">
+        <div class="news-img"></div>
+        <div class="news-content">
+          <div class="news-date">March 5, 2025</div>
+          <h3 class="news-title">Successful Training for Midwives Completed</h3>
+          <p class="news-excerpt">30 midwives from Kenya completed their advanced training in maternal health care.</p>
+          <a href="#" class="read-more">Read More</a>
+        </div>
+      </div>
+      <div class="news-card">
+        <div class="news-img"></div>
+        <div class="news-content">
+          <div class="news-date">February 28, 2025</div>
+          <h3 class="news-title">COOW-Africa Receives Grant for Expansion</h3>
+          <p class="news-excerpt">A major grant will help us expand our work to five new countries in West Africa.</p>
+          <a href="#" class="read-more">Read More</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Get Involved Section -->
+  <section id="get-involved" class="get-involved">
+    <h2 class="section-title">GET INVOLVED</h2>
+    <div class="program-container">
+      <div class="program-item">
+        <div class="program-icon">🤝</div>
+        <h3 class="program-title">Volunteer</h3>
+        <p class="program-text">Join our team of dedicated volunteers making a difference in communities across Africa.</p>
+        <a href="#" class="learn-more">Learn more →</a>
+      </div>
+      <div class="program-item">
+        <div class="program-icon">🌐</div>
+        <h3 class="program-title">Partnerships</h3>
+        <p class="program-text">Collaborate with us to expand our impact and reach more communities in need.</p>
+        <a href="#" class="learn-more">Learn more →</a>
+      </div>
+      <div class="program-item">
+        <div class="program-icon">📣</div>
+        <h3 class="program-title">Advocacy</h3>
+        <p class="program-text">Help raise awareness about health challenges in Africa and advocate for positive change.</p>
+        <a href="#" class="learn-more">Learn more →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Join Us Section -->
+  <section id="join-us" class="join-us">
+    <h2 class="section-title">JOIN US</h2>
+    <div class="project-grid">
+      <div class="project-card">
+        <div class="project-img"></div>
+        <div class="project-content">
+          <h3 class="project-title">Career Opportunities</h3>
+          <p class="project-description">Join our team of dedicated professionals working to improve health across Africa.</p>
+          <a href="#" class="read-more">View Openings</a>
+        </div>
+      </div>
+      <div class="project-card">
+        <div class="project-img"></div>
+        <div class="project-content">
+          <h3 class="project-title">Internships</h3>
+          <p class="project-description">Gain valuable experience while contributing to meaningful public health initiatives.</p>
+          <a href="#" class="read-more">Apply Now</a>
+        </div>
+      </div>
+      <div class="project-card">
+        <div class="project-img"></div>
+        <div class="project-content">
+          <h3 class="project-title">Fellowships</h3>
+          <p class="project-description">Professional development opportunities for health professionals and researchers.</p>
+          <a href="#" class="read-more">Learn More</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Support Us Section -->
+  <section id="support-us" class="support-us">
+    <h2 class="section-title">SUPPORT US</h2>
+    <div class="cta">
+      <h2>Join Our Mission</h2>
+      <p>Your support is essential to our work in improving health and welfare across Africa. Donate now to be a part of this life-changing initiative.</p>
+      <button class="donate-btn">Donate Now</button>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-content">
+      <div class="footer-info">
+        <img src="/api/placeholder/120/60" alt="COOW-Africa Logo" class="footer-logo">
+        <p>COOW-Africa is committed to improving health and welfare for communities across Africa.</p>
+      </div>
+      <div class="footer-links">
+        <h3 class="footer-title">Quick Links</h3>
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about-us">About Us</a></li>
+          <li><a href="#what-we-do">What We Do</a></li>
+          <li><a href="#research">Research</a></li>
+          <li><a href="#training">Training</a></li>
+        </ul>
+      </div>
+      <div class="footer-newsletter">
+        <h3 class="footer-title">Newsletter</h3>
+        <p>Subscribe to receive our latest updates.</p>
+        <form class="newsletter-form">
+          <input type="email" class="newsletter-input" placeholder="Your email">
+          <button type="submit" class="newsletter-btn">Subscribe</button>
+        </form>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 COOW-Africa. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Donation Modal Logic
+    const donationModal = document.getElementById('donationModal');
+    const donationModalClose = document.getElementById('donationModalClose');
+    const donateButtons = document.querySelectorAll('.donate-btn');
+
+    function openDonationModal(event) {
+      event.preventDefault();
+      donationModal.style.display = 'block';
+    }
+
+    donateButtons.forEach(btn => {
+      btn.addEventListener('click', openDonationModal);
+    });
+
+    donationModalClose.addEventListener('click', () => {
+      donationModal.style.display = 'none';
+    });
+
+    window.addEventListener('click', (event) => {
+      if (event.target === donationModal) {
+        donationModal.style.display = 'none';
+      }
+    });
+
+    // Payment Tabs Switching
+    const paymentTabs = document.querySelectorAll('.payment-tab');
+    const paymentSections = document.querySelectorAll('.payment-section');
+
+    paymentTabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        paymentTabs.forEach(t => t.classList.remove('active'));
+        paymentSections.forEach(section => section.classList.remove('active'));
+        tab.classList.add('active');
+        document.getElementById(tab.dataset.target).classList.add('active');
+      });
+    });
+
+    // Mobile Menu Toggle
+    const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+    const mainNav = document.querySelector('.main-nav');
+    mobileMenuBtn.addEventListener('click', () => {
+      mainNav.classList.toggle('active');
+    });
+
+    // Dark Mode Toggle                               
+    const darkModeToggle = document.getElementById('darkModeToggle');
+    darkModeToggle.addEventListener('click', () => {
+      document.documentElement.classList.toggle('dark-mode');
+      darkModeToggle.textContent = document.documentElement.classList.contains('dark-mode') ? '☀️ mode' : '🌙 mode';
+    });
+
+    // Scroll to Top Button
+    const goTopBtn = document.querySelector('.go-top');
+    window.addEventListener('scroll', () => {
+      if (window.pageYOffset > 300) {
+        goTopBtn.classList.add('visible');
+      } else {
+        goTopBtn.classList.remove('visible');
+      }
+    });
+    goTopBtn.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  </script>
+</body>
+</html>
